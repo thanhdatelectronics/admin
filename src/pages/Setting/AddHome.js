@@ -20,7 +20,7 @@ const AddHome = () => {
   useEffect(() => {
     const getdata = async () => {
       await axios
-        .get("https://ecom-oto.vercel.app/api/home/")
+        .get(`${process.env.REACT_APP_API_URL}home/`)
         .then((response) => {
           console.log(response.data);
           const dataHome = response.data[0];
@@ -59,7 +59,7 @@ const AddHome = () => {
     formData.append("descriptionsanpham1", descriptionsanpham1);
     formData.append("descriptionsanpham2", descriptionsanpham2);
     axios
-      .put("https://ecom-oto.vercel.app/api/home/", formData, {
+      .put(`${process.env.REACT_APP_API_URL}home/`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

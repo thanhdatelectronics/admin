@@ -14,7 +14,7 @@ const AddService = () => {
   useEffect(() => {
     const getdata = async () => {
       await axios
-        .get("https://ecom-oto.vercel.app/api/company-service/")
+        .get(`${process.env.REACT_APP_API_URL}company-service/`)
         .then((response) => {
           setImageHeader(response.data[0].imgheader.secure_url);
           setTitleHeader(response.data[0].titleheader);
@@ -40,7 +40,7 @@ const AddService = () => {
     formData.append("titlebody1", titlebody);
 
     axios
-      .put("https://ecom-oto.vercel.app/api/company-service", formData, {
+      .put(`${process.env.REACT_APP_API_URL}company-service`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

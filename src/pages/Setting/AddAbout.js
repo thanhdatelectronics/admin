@@ -33,7 +33,7 @@ const AddAbout = () => {
   useEffect(() => {
     const getdata = async () => {
       await axios
-        .get("https://ecom-oto.vercel.app/api/about-us/")
+        .get(`${process.env.REACT_APP_API_URL}about-us/`)
         .then((response) => {
           const datasAboutUs = response.data[0];
           setImgHeader(datasAboutUs.imgheader.secure_url);
@@ -81,7 +81,7 @@ const AddAbout = () => {
     formData.append("sumang", sumang);
 
     axios
-      .put("https://ecom-oto.vercel.app/api/about-us/", formData, {
+      .put(`${process.env.REACT_APP_API_URL}about-us/`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

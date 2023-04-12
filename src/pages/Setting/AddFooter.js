@@ -17,7 +17,7 @@ const AddFooter = () => {
   useEffect(() => {
     const getdata = async () => {
       await axios
-        .get("https://ecom-oto.vercel.app/api/info/")
+        .get(`${process.env.REACT_APP_API_URL}info/`)
         .then((response) => {
           const datas = response.data[0];
           setLogoFooter(datas.logo.secure_url);
@@ -51,7 +51,7 @@ const AddFooter = () => {
     formData.append("facebook", facebook);
     formData.append("gmail", gmail);
     axios
-      .put("https://ecom-oto.vercel.app/api/info/", formData, {
+      .put(`${process.env.REACT_APP_API_URL}info/`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
