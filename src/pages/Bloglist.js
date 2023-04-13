@@ -37,6 +37,10 @@ const Bloglist = () => {
   const hideModal = () => {
     setOpen(false);
   };
+  const hideModalDest = () => {
+    setOpen(false);
+  };
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(resetState());
@@ -88,7 +92,7 @@ const Bloglist = () => {
         performAction={() => {
           deleteBlog(blogId);
         }}
-        title="Are you sure you want to delete this blog?"
+        title="Bạn muốn xóa tin tức này?"
       />
     </div>
   );

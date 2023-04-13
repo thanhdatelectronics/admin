@@ -89,60 +89,58 @@ const Listnews = () => {
   const [visible, setVisible] = useState(false);
   const [pNewID, setpNewID] = useState("");
   const [open, setOpen] = useState(false);
-  const [openEdit, setOpenEdit] = useState(false);
-  const [openEditDes, setOpenEditDes] = useState(false);
+  // const [openEdit, setOpenEdit] = useState(false);
+  // const [openEditDes, setOpenEditDes] = useState(false);
 
-  const [editingBlog, setEditingBlog] = useState([]);
-  const [editingVideos, setEditingVideos] = useState("");
-  const [editImg, setEditingImg] = useState("");
-  const [editingCategory, setEditingCategory] = useState("");
+  // const [editingBlog, setEditingBlog] = useState([]);
+  // const [editingVideos, setEditingVideos] = useState("");
+  // const [editImg, setEditingImg] = useState("");
+  // const [editingCategory, setEditingCategory] = useState("");
   const [editorContent, setEditorContent] = useState(EditorState.createEmpty());
-  const [edtTitle, setEdtTitle] = useState("");
-  const [edtID, setEdtid] = useState("");
-  const [editorContentEdit, setEditorContentEdit] = useState(
-    EditorState.createEmpty()
-  );
-  const handleEditorChange = (editorState) => {
-    setEditorContentEdit(editorState);
-  };
+  // const [edtTitle, setEdtTitle] = useState("");
+  // const [edtID, setEdtid] = useState("");
+  // const [editorContentEdit, setEditorContentEdit] = useState(
+  //   EditorState.createEmpty()
+  // );
+  // const handleEditorChange = (editorState) => {
+  //   setEditorContentEdit(editorState);
+  // };
 
   const showModelNews = (e) => {
     setOpen(true);
     setpNewID(e);
   };
-  const showModalEdit = (blog) => {
-    setOpenEdit(true);
-    setEdtid(blog._id);
-    setEditingBlog(blog);
-    setEdtTitle(blog.title);
-    setEditingVideos(blog.video);
-    setEditingImg(blog.imageThumbnail.secure_url);
-    setEditingCategory(blog.category);
-    setEditorContentEdit(
-      EditorState.createWithContent(
-        convertFromRaw(JSON.parse(blog.description))
-      )
-    );
-  };
+  // const showModalEdit = (blog) => {
+  //   setOpenEdit(true);
+  //   setEdtid(blog._id);
+  //   setEditingBlog(blog);
+  //   setEdtTitle(blog.title);
+  //   setEditingVideos(blog.video);
+  //   setEditingImg(blog.imageThumbnail.secure_url);
+  //   setEditingCategory(blog.category);
+  //   setEditorContentEdit(
+  //     EditorState.createWithContent(
+  //       convertFromRaw(JSON.parse(blog.description))
+  //     )
+  //   );
+  // };
 
-  
-
- 
   const hideModal = () => {
     setOpen(false);
   };
-  const hideModalEdit = () => {
-    setOpenEdit(false);
-  };
-  const hideModalEditDes = () => {
-    setOpenEditDes(false);
-  };
+  // const hideModalEdit = () => {
+  //   setOpenEdit(false);
+  // };
+  // const hideModalEditDes = () => {
+  //   setOpenEditDes(false);
+  // };
   const showModal = (desc) => {
     setEditorContent(
       EditorState.createWithContent(convertFromRaw(JSON.parse(desc)))
     );
     setVisible(true);
   };
+  
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getBlogNews());
@@ -151,7 +149,7 @@ const Listnews = () => {
   }, []);
 
   const blogState = useSelector((state) => state.blognew.blogs);
-  const blogcategoryState = useSelector((state) => state.bCategory.bCategories);
+  // const blogcategoryState = useSelector((state) => state.bCategory.bCategories);
 
   const data = [];
   for (let i = 0; i < blogState.length; i++) {

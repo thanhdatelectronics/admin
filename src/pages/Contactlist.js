@@ -3,6 +3,7 @@ import { Table } from "antd";
 import { BiEdit } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import Modal from "antd/es/modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import {
@@ -25,27 +26,22 @@ const columns = [
   {
     title: "Email",
     dataIndex: "email",
-    sorter: (a, b) => a.name.length - b.name.length,
   },
   {
     title: "Số điện thoại",
     dataIndex: "phone",
-    sorter: (a, b) => a.name.length - b.name.length,
   },
   {
     title: "Địa chỉ",
     dataIndex: "address",
-    sorter: (a, b) => a.name.length - b.name.length,
   },
   {
     title: "Nội dung liên hệ",
     dataIndex: "description",
-    sorter: (a, b) => a.name.length - b.name.length,
   },
   {
     title: "Thời gian liên hệ",
     dataIndex: "createdAt",
-    sorter: (a, b) => a.name.length - b.name.length,
   },
   {
     title: "Action",
