@@ -4,24 +4,10 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import * as yup from "yup";
-import { useFormik } from "formik";
 import {
   getCategories,
-  createNewblogCat,
-  getABlogCat,
-  updateABlogCat,
-  deleteABlogCat,
 } from "../features/bcategory/bcategorySlice";
-import {
-  createMenu,
-  getABrand,
-  resetState,
-  updateABrand,
-} from "../features/brand/brandSlice";
 import axios from "axios";
-import { config } from "../utils/axiospostformdata";
-import draftToHtml from "draftjs-to-html";
 import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import { getABlog } from "../features/blogNews/blogSlice";

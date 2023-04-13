@@ -24,10 +24,6 @@ import { Editor } from "react-draft-wysiwyg";
 import imgerror from "../image/imgerror.png";
 import {
   getCategories,
-  createNewblogCat,
-  getABlogCat,
-  updateABlogCat,
-  deleteABlogCat,
 } from "../features/bcategory/bcategorySlice";
 const Listnews = () => {
   const columns = [
@@ -89,106 +85,80 @@ const Listnews = () => {
   const [visible, setVisible] = useState(false);
   const [pNewID, setpNewID] = useState("");
   const [open, setOpen] = useState(false);
-  // const [openEdit, setOpenEdit] = useState(false);
-  // const [openEditDes, setOpenEditDes] = useState(false);
-
-  // const [editingBlog, setEditingBlog] = useState([]);
-  // const [editingVideos, setEditingVideos] = useState("");
-  // const [editImg, setEditingImg] = useState("");
-  // const [editingCategory, setEditingCategory] = useState("");
   const [editorContent, setEditorContent] = useState(EditorState.createEmpty());
-  // const [edtTitle, setEdtTitle] = useState("");
-  // const [edtID, setEdtid] = useState("");
-  // const [editorContentEdit, setEditorContentEdit] = useState(
-  //   EditorState.createEmpty()
-  // );
-  // const handleEditorChange = (editorState) => {
-  //   setEditorContentEdit(editorState);
-  // };
+  const blogState = useSelector((state) => state.blognew.blogs);
+  const bCategoryState = useSelector((state) => state.bCategory.bCategories);
+
+  const dispatch = useDispatch();
 
   const showModelNews = (e) => {
     setOpen(true);
     setpNewID(e);
   };
-  // const showModalEdit = (blog) => {
-  //   setOpenEdit(true);
-  //   setEdtid(blog._id);
-  //   setEditingBlog(blog);
-  //   setEdtTitle(blog.title);
-  //   setEditingVideos(blog.video);
-  //   setEditingImg(blog.imageThumbnail.secure_url);
-  //   setEditingCategory(blog.category);
-  //   setEditorContentEdit(
-  //     EditorState.createWithContent(
-  //       convertFromRaw(JSON.parse(blog.description))
-  //     )
-  //   );
-  // };
 
   const hideModal = () => {
     setOpen(false);
   };
-  // const hideModalEdit = () => {
-  //   setOpenEdit(false);
-  // };
-  // const hideModalEditDes = () => {
-  //   setOpenEditDes(false);
-  // };
+
   const showModal = (desc) => {
     setEditorContent(
       EditorState.createWithContent(convertFromRaw(JSON.parse(desc)))
     );
     setVisible(true);
   };
-  
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getBlogNews());
-    dispatch(resetState());
-    dispatch(getCategories());
-  }, []);
-
-  const blogState = useSelector((state) => state.blognew.blogs);
-  // const blogcategoryState = useSelector((state) => state.bCategory.bCategories);
 
   const data = [];
-  for (let i = 0; i < blogState.length; i++) {
-    data.push({
-      key: i + 1,
-      title: blogState[i].title,
-      description: blogState[i].description,
-      category: blogState[i].category,
-      imageThumbnail: blogState[i].imageThumbnail,
-      video: blogState[i].video,
-      action: (
-        <>
-          <div className="flex">
-            <Link
-              className="fs-3 text-primary bg-transparent border-0"
-              to={`/admin/news/${blogState[i]._id}`}
+  if (bCategoryState.length != 0 && blogState.length != 0)
+    for (let i = 0; i < blogState.length; i++) {
+
+      const nameBCategory = bCategoryState.filter((ct) => {
+        return ct._id == blogState[i].category;
+      });
+      console.log(nameBCategory);
+      data.push({
+        key: i + 1,
+        title: blogState[i].title,
+        description: blogState[i].description,
+        category: nameBCategory[0].title != undefined ? nameBCategory[0].title : null,
+        imageThumbnail: blogState[i].imageThumbnail,
+        video: blogState[i].video,
+        action: (
+          <>
+            <div className="flex">
+              <Link
+                className="fs-3 text-primary bg-transparent border-0"
+                to={`/admin/news/${blogState[i]._id}`}
               // onClick={() => showModalEdit(blogState[i])}
-            >
-              <BiEdit />
-            </Link>
-            <button
-              className="ms-3 fs-3 text-danger bg-transparent border-0"
-              onClick={() => showModelNews(blogState[i]._id)}
-            >
-              <AiFillDelete />
-            </button>
-          </div>
-        </>
-      ),
-    });
-  }
+              >
+                <BiEdit />
+              </Link>
+              <button
+                className="ms-3 fs-3 text-danger bg-transparent border-0"
+                onClick={() => showModelNews(blogState[i]._id)}
+              >
+                <AiFillDelete />
+              </button>
+            </div>
+          </>
+        ),
+      });
+    }
   const deleteCategory = (e) => {
     dispatch(deleteBlog(e));
     setOpen(false);
+
+    setTimeout(async () => {
+      await dispatch(resetState());
+      await dispatch(getBlogNews());
+      await dispatch(getCategories());
+    }, 1000);
     toast.success("Xóa thành công");
-    setTimeout(() => {
-      window.location.reload();
-    }, 3000);
   };
+
+  useEffect(() => {
+    dispatch(getBlogNews());
+    dispatch(getCategories());
+  }, [dispatch]);
 
   return (
     <>

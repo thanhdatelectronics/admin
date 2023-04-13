@@ -5,11 +5,12 @@ import { AiFillDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
-    deleteAcContainer,
-    getcContainers,
-    resetState,
+  deleteAcContainer,
+  getcContainers,
+  resetState,
 } from "../features/CategoryContainer/cContainerSlice";
 import CustomModal from "../components/CustomModal";
+import { toast } from "react-toastify";
 
 const columns = [
   {
@@ -31,6 +32,9 @@ const columns = [
 const DMCList = () => {
   const [open, setOpen] = useState(false);
   const [cConId, setcConId] = useState("");
+  const cConState = useSelector((state) => state.catectn.cContainers);
+  const dispatch = useDispatch();
+
   const showModal = (e) => {
     setOpen(true);
     setcConId(e);
@@ -39,13 +43,8 @@ const DMCList = () => {
   const hideModal = () => {
     setOpen(false);
   };
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(resetState());
-    dispatch(getcContainers());
-  }, []);
-  const cConState = useSelector((state) => state.catectn.cContainers);
-  console.log(cConState);
+
+
   const data1 = [];
   for (let i = 0; i < cConState.length; i++) {
     data1.push({
@@ -53,31 +52,40 @@ const DMCList = () => {
       name: cConState[i].name,
       action: (
         <>
-        <div className="flex">
-          <Link
-            to={`/admin/dmc/${cConState[i]._id}`}
-            className=" fs-3 text-danger"
-          >
-            <BiEdit />
-          </Link>
-          <button
-            className="ms-3 fs-3 text-danger bg-transparent border-0"
-            onClick={() => showModal(cConState[i]._id)}
-          >
-            <AiFillDelete />
-          </button>
+          <div className="flex">
+            <Link
+              to={`/admin/dmc/${cConState[i]._id}`}
+              className=" fs-3 text-danger"
+            >
+              <BiEdit />
+            </Link>
+            <button
+              className="ms-3 fs-3 text-danger bg-transparent border-0"
+              onClick={() => showModal(cConState[i]._id)}
+            >
+              <AiFillDelete />
+            </button>
           </div>
         </>
       ),
     });
   }
+
   const deletecc = (e) => {
     dispatch(deleteAcContainer(e));
     setOpen(false);
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
+    setTimeout(async () => {
+      await dispatch(resetState());
+      await dispatch(getcContainers());
+    }, 1000);
+    toast.success("Xóa sản phẩm thành công ");
   };
+
+  useEffect(() => {
+  
+    dispatch(getcContainers());
+  }, [dispatch]);
+  
   return (
     <div>
       <h3 className="mb-4 title text-xl font-bold">Danh mục sản phẩm chính</h3>

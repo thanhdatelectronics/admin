@@ -61,7 +61,7 @@ const columns = [
   {
     title: "Ảnh sản phẩm",
     dataIndex: "url",
-    // sorter: (a, b) => a.price - b.price,
+  
   },
   {
     title: "Hành động",
@@ -72,7 +72,6 @@ const Productlist = () => {
   const productStates = useSelector((state) => state.product.products);
   const pCategory = useSelector((state) => state.pCategory.pCategories);
   const brands = useSelector((state) => state.brand.brands);
-
   const categorycontainer = useSelector((state) => state.catectn.cContainers);
 
   const dispatch = useDispatch();
@@ -110,7 +109,7 @@ const Productlist = () => {
 
   const [showModalDelete, setshowModalDelete] = useState(false);
   const [showModalEdit, setshowModalEdit] = useState(false);
-  const [fileList, setFileList] = useState([]);
+
 
   productStates?.map((productState, i) => {
     pCategory?.map((pCate) => {

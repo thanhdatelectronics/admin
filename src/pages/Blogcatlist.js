@@ -10,6 +10,7 @@ import {
   resetState,
 } from "../features/bcategory/bcategorySlice";
 import CustomModal from "../components/CustomModal";
+import { toast } from "react-toastify";
 
 const columns = [
   {
@@ -31,6 +32,8 @@ const columns = [
 const Blogcatlist = () => {
   const [open, setOpen] = useState(false);
   const [blogCatId, setblogCatId] = useState("");
+  const bCatState = useSelector((state) => state.bCategory.bCategories);
+  const dispatch = useDispatch();
   const showModal = (e) => {
     setOpen(true);
     setblogCatId(e);
@@ -39,12 +42,8 @@ const Blogcatlist = () => {
   const hideModal = () => {
     setOpen(false);
   };
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(resetState());
-    dispatch(getCategories());
-  }, []);
-  const bCatState = useSelector((state) => state.bCategory.bCategories);
+
+
 
   const data1 = [];
   for (let i = 0; i < bCatState.length; i++) {
@@ -53,19 +52,19 @@ const Blogcatlist = () => {
       name: bCatState[i].title,
       action: (
         <>
-        <div className="flex">
-          <Link
-            to={`/admin/blogcategory/${bCatState[i]._id}`}
-            className=" fs-3 text-danger"
-          >
-            <BiEdit />
-          </Link>
-          <button
-            className="ms-3 fs-3 text-danger bg-transparent border-0"
-            onClick={() => showModal(bCatState[i]._id)}
-          >
-            <AiFillDelete />
-          </button>
+          <div className="flex">
+            <Link
+              to={`/admin/blogcategory/${bCatState[i]._id}`}
+              className=" fs-3 text-danger"
+            >
+              <BiEdit />
+            </Link>
+            <button
+              className="ms-3 fs-3 text-danger bg-transparent border-0"
+              onClick={() => showModal(bCatState[i]._id)}
+            >
+              <AiFillDelete />
+            </button>
           </div>
         </>
       ),
@@ -74,10 +73,17 @@ const Blogcatlist = () => {
   const deleteBlogCategory = (e) => {
     dispatch(deleteABlogCat(e));
     setOpen(false);
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
+    setTimeout(async () => {
+      await dispatch(resetState());
+      await dispatch(getCategories());
+    }, 1000);
+    toast.success("Xóa danh mục tin tức thành công")
   };
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
+
   return (
     <div>
       <h3 className="mb-4 title text-xl font-bold">Danh mục tin tức</h3>

@@ -10,6 +10,7 @@ import {
   resetState,
 } from "../features/pcategory/pcategorySlice";
 import CustomModal from "../components/CustomModal";
+import { toast } from "react-toastify";
 
 const columns = [
   {
@@ -31,6 +32,9 @@ const columns = [
 const Categorylist = () => {
   const [open, setOpen] = useState(false);
   const [pCatId, setpCatId] = useState("");
+  const pCatStat = useSelector((state) => state.pCategory);
+  const { pCategories } = pCatStat;
+
   const showModal = (e) => {
     setOpen(true);
     setpCatId(e);
@@ -40,11 +44,8 @@ const Categorylist = () => {
     setOpen(false);
   };
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getCategories());
-  }, []);
-  const pCatStat = useSelector((state) => state.pCategory);
-  const { isSuccess, isError, deletedCategory, pCategories } = pCatStat;
+
+
 
   const data1 = [];
   for (let i = 0; i < pCategories.length; i++) {
@@ -71,15 +72,23 @@ const Categorylist = () => {
       ),
     });
   }
+
   const deleteCategory = (e) => {
     dispatch(deleteAProductCategory(e));
     setOpen(false);
 
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
-    
+    setTimeout(async () => {
+      await dispatch(resetState());
+      await dispatch(getCategories());
+    }, 1000);
+    toast.success("Xóa danh mục thành công");
   };
+
+
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
 
   return (
     <div className="md:flex md:flex-col md:items-start">

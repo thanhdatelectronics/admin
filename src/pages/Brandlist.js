@@ -10,6 +10,7 @@ import {
   resetState,
 } from "../features/brand/brandSlice";
 import CustomModal from "../components/CustomModal";
+import { toast } from "react-toastify";
 
 const columns = [
   {
@@ -30,6 +31,8 @@ const columns = [
 const Brandlist = () => {
   const [open, setOpen] = useState(false);
   const [brandId, setbrandId] = useState("");
+  const brandState = useSelector((state) => state.brand.brands);
+  const dispatch = useDispatch();
   const showModal = (e) => {
     setOpen(true);
     setbrandId(e);
@@ -38,12 +41,9 @@ const Brandlist = () => {
   const hideModal = () => {
     setOpen(false);
   };
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(resetState());
-    dispatch(getBrands());
-  }, []);
-  const brandState = useSelector((state) => state.brand.brands);
+
+  
+  
 
   const data1 = [];
   for (let i = 0; i < brandState.length; i++) {
@@ -73,10 +73,21 @@ const Brandlist = () => {
   const deleteBrand = (e) => {
     dispatch(deleteABrand(e));
     setOpen(false);
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
+    setTimeout(async () => {
+      await dispatch(resetState());
+      await dispatch(getBrands());
+    }, 1000);
+
+    toast.success("Xóa nhãn hàng thành công");
   };
+
+  useEffect(() => {
+    dispatch(getBrands());
+  }, [dispatch]);
+
+
+
+  
   return (
     <div className="md:flex md:flex-col md:items-start">
       <h3 className="mb-4 text-xl font-bold">Brands</h3>
