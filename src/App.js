@@ -39,6 +39,7 @@ import AddService from "./pages/Setting/AddContact";
 import AddAbout from "./pages/Setting/AddAbout";
 import AddDMC from "./pages/AddDMC";
 import DMCList from "./pages/DMCList";
+import ListContact from "./pages/Contactlist";
 function App() {
   return (
     <Router>
@@ -91,6 +92,7 @@ function App() {
           <Route path="add-footer" element={<AddFooter />} />
           <Route path="add-service" element={<AddService />} />
           <Route path="add-about" element={<AddAbout />} />
+          <Route path="list-contact" element={<ListContact />} />
         </Route>
       </Routes>
     </Router>

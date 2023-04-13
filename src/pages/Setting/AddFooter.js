@@ -189,7 +189,7 @@ const AddFooter = () => {
                   setZalo(e.target.value);
                 }}
               />
-                 <label
+              <label
                 className="block mb-2 font-medium text-blue-500 mt-2"
                 for="file_input"
               >
@@ -204,7 +204,7 @@ const AddFooter = () => {
                   setFacebook(e.target.value);
                 }}
               />
-                 <label
+              <label
                 className="block mb-2 font-medium text-blue-500 mt-2"
                 for="file_input"
               >
@@ -225,7 +225,7 @@ const AddFooter = () => {
               className="bg-blue-500 text-white lg:h-[40px] lg:w-[250px] mt-2 rounded-3 my-5 w-[210px] h-[40px] "
               type="submit"
             >
-              Chỉnh sửa
+              Cập nhật
             </button>
           </form>
         </div>

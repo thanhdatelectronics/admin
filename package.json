@@ -28,6 +28,7 @@
     "framer-motion": "^10.11.4",
     "immutable": "^4.3.0",
     "install": "^0.13.0",
+    "moment": "^2.29.4",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.22",
     "npm": "^9.6.4",

@@ -11,8 +11,9 @@ import colorReducer from "../features/color/colorSlice";
 import enquiryReducer from "../features/enquiry/enquirySlice";
 import uploadReducer from "../features/upload/uploadSlice";
 import couponReducer from "../features/coupon/couponSlice";
-import linkSliceReducer from "../features/link/linkSlice"
-import cateCTNReducer from "../features/CategoryContainer/cContainerSlice"
+import linkSliceReducer from "../features/link/linkSlice";
+import cateCTNReducer from "../features/CategoryContainer/cContainerSlice";
+import contactSliceReducer from "../features/contacts/contactSlice";
 export const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -29,5 +30,6 @@ export const store = configureStore({
     coupon: couponReducer,
     link: linkSliceReducer,
     catectn: cateCTNReducer,
+    contacts: contactSliceReducer,
   },
 });

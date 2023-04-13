@@ -15,10 +15,10 @@ import { MdMenu } from "react-icons/md";
 import Logoimage from "../image/logo.jpg";
 import {
   FiShoppingBag,
-  FiAlignCenter,
+  FiInfo,
   FiHome,
   FiPocket,
-  FiBox,
+  FiContact,
   FiList,
   FiBookmark,
   FiLink,
@@ -32,8 +32,8 @@ import {
   FiPaperclip,
   FiSettings,
 } from "react-icons/fi";
-import { FaRegNewspaper } from "react-icons/fa";
-import { BsFillMenuButtonWideFill } from "react-icons/bs";
+import { FaRegNewspaper, FaUserFriends } from "react-icons/fa";
+import { GrContact, GrServices } from "react-icons/gr";
 import {
   NavLink,
   useLocation,
@@ -97,34 +97,6 @@ const Sidebar = () => {
           },
         },
       };
-
-  // const subMenusList = [
-  //   {
-  //     name: "build",
-  //     icon: RiBuilding3Line,
-  //     menus: ["auth", "app settings", "stroage", "hosting"],
-  //   },
-  //   {
-  //     name: "analytics",
-  //     icon: TbReportAnalytics,
-  //     menus: ["dashboard", "realtime", "events"],
-  //   },
-  // ];
-
-  // const subCatalog = [
-  //   {
-  //     name: "Danh mục hàng hóa",
-  //     icon: RiBuilding3Line,
-  //     menus: ["Thêm danh mục hàng hóa", "Tổng hợp danh mục"],
-  //   },
-  // ];
-  // const subProduct = [
-  //   {
-  //     name: "Hàng hóa",
-  //     icon: RiBuilding3Line,
-  //     menus: ["Thêm hàng hóa", "Danh sách hàng hóa"],
-  //   },
-  // ];
 
   return (
     <div>
@@ -265,47 +237,46 @@ const Sidebar = () => {
                 ],
               },
               {
+                key: "Contact",
+                icon: <GrContact className="fs-4" />,
+                label: "Quản lý liên hệ",
+                children: [
+                  {
+                    key: "list-contact",
+                    icon: <GrContact className="fs-4" />,
+                    label: "Danh sách liên hệ",
+                  },
+                ],
+              },
+              {
                 key: "setting",
                 icon: <FiSettings className="fs-4" />,
                 label: "Cài đặt",
                 children: [
                   {
                     key: "add-home",
-                    icon: <FiSettings className="fs-4" />,
-                    label: "Chỉnh sửa trang chủ",
+                    icon: <FiHome className="fs-4" />,
+                    label: "Trang chủ",
                   },
                   {
                     key: "add-footer",
-                    icon: <FiSettings className="fs-4" />,
-                    label: "Chỉnh sửa chân trang ",
+                    icon: <FiInfo className="fs-4" />,
+                    label: "Thông tin website",
                   },
                   {
                     key: "add-service",
-                    icon: <FiSettings className="fs-4" />,
-                    label: "Chỉnh sửa dịch vụ",
+                    icon: <GrServices className="fs-4" />,
+                    label: "Trang dịch vụ",
                   },
                   {
                     key: "add-about",
-                    icon: <FiSettings className="fs-4" />,
-                    label: "Chỉnh sửa About",
+                    icon: <FaUserFriends className="fs-4" />,
+                    label: "Trang về chúng tôi",
                   },
                 ],
               },
             ]}
           />
-          {open && (
-            <div className="flex-1 text-sm z-50  max-h-48 my-auto  whitespace-pre   w-full  font-medium  ">
-              {/* <div className="flex border-y border-slate-300 p-4 items-center justify-between">
-                <div>
-                  <p>Spark</p>
-                  <small>No-cost $0/month</small>
-                </div>
-                <p className="text-teal-500 py-1.5 px-3 text-xs bg-teal-50 rounded-xl">
-                  Upgrade
-                </p>
-              </div> */}
-            </div>
-          )}
         </div>
         <motion.div
           onClick={() => {

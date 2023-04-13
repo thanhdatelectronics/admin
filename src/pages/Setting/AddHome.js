@@ -141,7 +141,7 @@ const AddHome = () => {
                   setTitleProduct2(e.target.value);
                 }}
               />
-               <label
+              <label
                 className="block mb-2 font-medium text-blue-500 "
                 for="file_input"
               >
@@ -156,7 +156,7 @@ const AddHome = () => {
                   setTitlesanpham1(e.target.value);
                 }}
               />
-               <label
+              <label
                 className="block mb-2 font-medium text-blue-500 "
                 for="file_input"
               >
@@ -171,7 +171,7 @@ const AddHome = () => {
                   setDescriptionSanPham1(e.target.value);
                 }}
               />
-               <label
+              <label
                 className="block mb-2 font-medium text-blue-500 "
                 for="file_input"
               >
@@ -186,7 +186,7 @@ const AddHome = () => {
                   setTitlesanpham2(e.target.value);
                 }}
               />
-               <label
+              <label
                 className="block mb-2 font-medium text-blue-500 "
                 for="file_input"
               >
@@ -240,7 +240,7 @@ const AddHome = () => {
               className="bg-blue-500 text-white lg:h-[40px] lg:w-[250px] rounded-3 my-5 w-[210px] h-[40px] "
               type="submit"
             >
-              Chỉnh sửa Trang Chủ
+              Cập nhật
             </button>
           </form>
         </div>

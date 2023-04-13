@@ -139,7 +139,7 @@ const AddService = () => {
               className="bg-blue-500 text-white lg:h-[40px]  lg:w-[250px] mt-2 rounded-3 my-5 w-[210px] h-[40px] "
               type="submit"
             >
-              Chỉnh sửa dịch vụ
+              Cập nhật
             </button>
           </form>
         </div>
