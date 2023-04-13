@@ -165,68 +165,34 @@ const Sidebar = () => {
               {
                 key: "dmcs",
                 icon: <FiTrello className="fs-4" />,
-                label: "Danh mục sản phẩm chính",
+                label: "Danh mục chính",
                 children: [
                   {
                     key: "dmc",
                     icon: <FiPlusSquare className="fs-4" />,
-                    label: "Thêm danh mục sản phẩm chính",
+                    label: "Thêm danh mục chính",
                   },
                   {
                     key: "dmc-list",
                     icon: <FiMenu className="fs-4" />,
-                    label: "Danh sách sản phẩm chính",
+                    label: "Danh sách danh mục lớn",
                   },
                 ],
               },
               {
                 key: "Catalogs",
                 icon: <FiList className="fs-4" />,
-                label: "Quản lý danh mục hàng hóa",
+                label: "Quản lý danh mục",
                 children: [
                   {
                     key: "category",
                     icon: <FiPlusSquare className="fs-4" />,
-                    label: "Thêm danh mục hàng hóa",
+                    label: "Thêm danh mục",
                   },
                   {
                     key: "list-category",
                     icon: <FiLayers className="fs-4" />,
-                    label: "Tổng hợp danh mục",
-                  },
-                ],
-              },
-              {
-                key: "Catalog",
-                icon: <FiShoppingBag className="fs-4" />,
-                label: "Hàng Hóa",
-                children: [
-                  {
-                    key: "product",
-                    icon: <FiPlusSquare className="fs-4" />,
-                    label: "Thêm hàng hóa",
-                  },
-                  {
-                    key: "list-product",
-                    icon: <FiPackage className="fs-4" />,
-                    label: "Danh sách hàng hóa",
-                  },
-                ],
-              },
-              {
-                key: "Newss",
-                icon: <FaRegNewspaper className="fs-4" />,
-                label: "Quản lý tin tức",
-                children: [
-                  {
-                    key: "news",
-                    icon: <FiPlusSquare className="fs-4" />,
-                    label: "Thêm tin tức",
-                  },
-                  {
-                    key: "list-news",
-                    icon: <FiGrid className="fs-4" />,
-                    label: "Danh sách tin tức",
+                    label: "Danh sách danh mục",
                   },
                 ],
               },
@@ -248,6 +214,23 @@ const Sidebar = () => {
                 ],
               },
               {
+                key: "Catalog",
+                icon: <FiShoppingBag className="fs-4" />,
+                label: "Hàng Hóa",
+                children: [
+                  {
+                    key: "product",
+                    icon: <FiPlusSquare className="fs-4" />,
+                    label: "Thêm hàng hóa",
+                  },
+                  {
+                    key: "list-product",
+                    icon: <FiPackage className="fs-4" />,
+                    label: "Danh sách hàng hóa",
+                  },
+                ],
+              },
+              {
                 key: "blogcategory",
                 icon: <FiBookmark className="fs-4" />,
                 label: "Danh mục tin tức",
@@ -261,6 +244,23 @@ const Sidebar = () => {
                     key: "blog-category-list",
                     icon: <FiMenu className="fs-4" />,
                     label: "Danh sách danh mục tin",
+                  },
+                ],
+              },
+              {
+                key: "Newss",
+                icon: <FaRegNewspaper className="fs-4" />,
+                label: "Quản lý tin tức",
+                children: [
+                  {
+                    key: "news",
+                    icon: <FiPlusSquare className="fs-4" />,
+                    label: "Thêm tin tức",
+                  },
+                  {
+                    key: "list-news",
+                    icon: <FiGrid className="fs-4" />,
+                    label: "Danh sách tin tức",
                   },
                 ],
               },
