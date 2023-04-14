@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Table } from "antd";
-import { BiEdit } from "react-icons/bi";
+import { BiEdit, BiCommentDetail } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
@@ -22,9 +22,7 @@ import draftToHtml from "draftjs-to-html";
 import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import imgerror from "../image/imgerror.png";
-import {
-  getCategories,
-} from "../features/bcategory/bcategorySlice";
+import { getCategories } from "../features/bcategory/bcategorySlice";
 const Listnews = () => {
   const columns = [
     {
@@ -110,7 +108,6 @@ const Listnews = () => {
   const data = [];
   if (bCategoryState.length != 0 && blogState.length != 0)
     for (let i = 0; i < blogState.length; i++) {
-
       const nameBCategory = bCategoryState.filter((ct) => {
         return ct._id == blogState[i].category;
       });
@@ -119,7 +116,8 @@ const Listnews = () => {
         key: i + 1,
         title: blogState[i].title,
         description: blogState[i].description,
-        category: nameBCategory[0].title != undefined ? nameBCategory[0].title : null,
+        category:
+          nameBCategory[0].title != undefined ? nameBCategory[0].title : null,
         imageThumbnail: blogState[i].imageThumbnail,
         video: blogState[i].video,
         action: (
@@ -128,7 +126,7 @@ const Listnews = () => {
               <Link
                 className="fs-3 text-primary bg-transparent border-0"
                 to={`/admin/news/${blogState[i]._id}`}
-              // onClick={() => showModalEdit(blogState[i])}
+                // onClick={() => showModalEdit(blogState[i])}
               >
                 <BiEdit />
               </Link>
@@ -138,6 +136,11 @@ const Listnews = () => {
               >
                 <AiFillDelete />
               </button>
+              <Link to={`../comment/${blogState[i]._id}`}>
+                <button className="ms-3 fs-3 text-success bg-transparent border-0">
+                  <BiCommentDetail />
+                </button>
+              </Link>
             </div>
           </>
         ),

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Input, Modal, Table } from "antd";
-import { BiEdit } from "react-icons/bi";
+import { BiEdit, BiCommentDetail } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import imgerror from "../image/imgerror.png";
@@ -38,9 +38,8 @@ const columns = [
       <div
         dangerouslySetInnerHTML={{
           __html: `${text}`,
-        }} >
-
-      </div>
+        }}
+      ></div>
     ),
   },
   {
@@ -61,11 +60,14 @@ const columns = [
   {
     title: "Ảnh sản phẩm",
     dataIndex: "url",
-  
   },
   {
     title: "Hành động",
     dataIndex: "action",
+  },
+  {
+    title: "Đánh giá",
+    dataIndex: "feedback",
   },
 ];
 const Productlist = () => {
@@ -110,7 +112,6 @@ const Productlist = () => {
   const [showModalDelete, setshowModalDelete] = useState(false);
   const [showModalEdit, setshowModalEdit] = useState(false);
 
-
   productStates?.map((productState, i) => {
     pCategory?.map((pCate) => {
       if (productState?.idCategory == pCate?._id) {
@@ -122,17 +123,17 @@ const Productlist = () => {
         });
         data1.push({
           key: i + 1,
-          id: productState._id ? productState._id : "undefined",
-          name: productState.name ? productState.name : "undefined",
+          id: productState._id ? productState._id : "Rỗng",
+          name: productState.name ? productState.name : "Rỗng",
           description: productState.description
             ? productState.description
-            : "undefined",
-          idCategory: pCate.name ? pCate.name : "undefined",
-          slug: productState.slug ? productState.slug : "undefined",
-          brand: brand[0]?.title != null ? brand[0].title : "undefined",
+            : "Rỗng",
+          idCategory: pCate.name ? pCate.name : "Rỗng",
+          slug: productState.slug ? productState.slug : "Rỗng",
+          brand: brand[0]?.title != null ? brand[0].title : "Rỗng",
           idContainerCategory: cateContainer[0]?.name
             ? cateContainer[0].name
-            : "undefined",
+            : "Rỗng",
 
           url: (
             <img
@@ -170,6 +171,15 @@ const Productlist = () => {
               >
                 <AiFillDelete />
               </span>
+            </>
+          ),
+          feedback: (
+            <>
+              <Link to={`../feedbackproduct/${productState._id}`}>
+                <button className="ms-3 fs-3 text-success bg-transparent border-0">
+                  <BiCommentDetail />
+                </button>
+              </Link>
             </>
           ),
         });
