@@ -74,54 +74,58 @@ const FeedbackProduct = () => {
       <div>
         <TableContainer className="table container mx-auto">
           <h2 className="text-[30px] pb-3">Danh Sách Các Đánh Giá</h2>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell className="tableCell" align="center">
-                  Họ tên
-                </TableCell>
-                <TableCell className="tableCell" align="center">
-                  Địa chỉ email
-                </TableCell>
-                <TableCell className="tableCell" align="center">
-                  Đánh giá
-                </TableCell>
-                <TableCell className="tableCell" align="center">
-                  Bình luận
-                </TableCell>
-                <TableCell className="tableCell" align="center">
-                  Thời gian
-                </TableCell>
-                <TableCell className="tableCell" align="center">
-                  Hành động
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {feedbackproducts.map((item, index) => (
-                <TableRow key={index}>
-                  <TableCell align="center">{item.usename}</TableCell>
-                  <TableCell align="center">{item.email}</TableCell>
-                  <TableCell align="center">
-                    {" "}
-                    {[...Array(item.quality)].map((n, i) => renderStar(i))}{" "}
+          <div className="overflow-y-scroll h-[500px]">
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell className="tableCell" align="center">
+                    Họ tên
                   </TableCell>
-                  <TableCell align="center">{item.comment}</TableCell>
-                  <TableCell align="center">
-                    {moment(item.createdAt).format("DD-MM-YYYY")}
+                  <TableCell className="tableCell" align="center">
+                    Địa chỉ email
                   </TableCell>
-                  <TableCell align="center">
-                    <Button
-                      onClick={() => showModal(item._id)}
-                      className="text-medium text-danger bg-transparent"
-                    >
-                      <AiFillDelete />
-                    </Button>
+                  <TableCell className="tableCell" align="center">
+                    Đánh giá
+                  </TableCell>
+                  <TableCell className="tableCell" align="center">
+                    Bình luận
+                  </TableCell>
+                  <TableCell className="tableCell" align="center">
+                    Thời gian
+                  </TableCell>
+                  <TableCell className="tableCell" align="center">
+                    Hành động
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHead>
+              <TableBody>
+                {feedbackproducts.map((item, index) => (
+                  <TableRow key={index}>
+                    <TableCell align="center">{item.usename}</TableCell>
+                    <TableCell align="center">{item.email}</TableCell>
+                    <TableCell align="center">
+                      {" "}
+                      {[...Array(item.quality)].map((n, i) =>
+                        renderStar(i)
+                      )}{" "}
+                    </TableCell>
+                    <TableCell align="center">{item.comment}</TableCell>
+                    <TableCell align="center">
+                      {moment(item.createdAt).format("DD-MM-YYYY")}
+                    </TableCell>
+                    <TableCell align="center">
+                      <Button
+                        onClick={() => showModal(item._id)}
+                        className="text-medium text-danger bg-transparent"
+                      >
+                        <AiFillDelete />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
         </TableContainer>
       </div>
       <div className="mt-4">
