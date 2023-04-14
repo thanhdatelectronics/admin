@@ -24,11 +24,8 @@ import Couponlist from "./pages/Couponlist";
 import AddCoupon from "./pages/AddCoupon";
 import ViewEnq from "./pages/ViewEnq";
 import ViewOrder from "./pages/ViewOrder";
-import Addmenu from "./pages/Addmenu";
 import Menulist from "./pages/Menulist";
 import Setting from "./pages/Setting";
-import ConfigChatlist from "./pages/ConfigChatlist";
-import AddLink from "./pages/Addlink";
 import Linklist from "./pages/Linklist";
 import Nav from "../src/components/Nav";
 import News from "../src/pages/Addnews";
@@ -39,7 +36,9 @@ import AddService from "./pages/Setting/AddContact";
 import AddAbout from "./pages/Setting/AddAbout";
 import AddDMC from "./pages/AddDMC";
 import DMCList from "./pages/DMCList";
+import CommentBlog from "./pages/Commentblog.js";
 import ListContact from "./pages/Contactlist";
+import FeedbackProduct from "./pages/FeedbackProduct";
 function App() {
   return (
     <Router>
@@ -82,17 +81,16 @@ function App() {
           <Route path="dmc" element={<AddDMC />} />
           <Route path="dmc/:id" element={<AddDMC />} />
           <Route path="dmc-list" element={<DMCList />} />
-          <Route path="menu" element={<Addmenu />} />
           <Route path="menu-list" element={<Menulist />} />
           <Route path="setting" element={<Setting />} />
-          <Route path="config-list" element={<ConfigChatlist />} />
-          <Route path="add-link" element={<AddLink />} />
           <Route path="link-list" element={<Linklist />} />
           <Route path="add-home" element={<AddHome />} />
           <Route path="add-footer" element={<AddFooter />} />
           <Route path="add-service" element={<AddService />} />
           <Route path="add-about" element={<AddAbout />} />
           <Route path="list-contact" element={<ListContact />} />
+          <Route path="comment/:id" element={<CommentBlog />} />
+          <Route path="feedbackproduct/:id" element={<FeedbackProduct />} />
         </Route>
       </Routes>
     </Router>
