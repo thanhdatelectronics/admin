@@ -23,10 +23,16 @@ const getOrder = async (id) => {
   return response.data;
 };
 
+
+const logout = () => {
+  localStorage.removeItem("user");
+};
+
 const authService = {
   login,
   getOrders,
   getOrder,
+  logout,
 };
 
 export default authService;

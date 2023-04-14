@@ -40,15 +40,21 @@ import AddAbout from "./pages/Setting/AddAbout";
 import AddDMC from "./pages/AddDMC";
 import DMCList from "./pages/DMCList";
 import ListContact from "./pages/Contactlist";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 function App() {
+
+
+ 
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/reset-password" element={<Resetpassword />} />
         <Route path="/forgot-password" element={<Forgotpassword />} />
-        <Route path="/admin" element={<Nav />}>
-          <Route index element={<Dashboard />} />
+        <Route path="/" element={<Nav />}>
           <Route path="enquiries" element={<Enquiries />} />
           <Route path="enquiries/:id" element={<ViewEnq />} />
           <Route path="blog-list" element={<Bloglist />} />

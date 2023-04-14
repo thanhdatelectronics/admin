@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useRef } from "react";
 import SubMenu from "./Menu.js";
 import { motion } from "framer-motion";
@@ -42,6 +42,8 @@ import {
   useNavigate,
   Routes,
 } from "react-router-dom";
+import { logout } from "../features/auth/authSlice.js";
+import { useDispatch } from "react-redux";
 
 const Sidebar = () => {
   let isTabletMid = useMediaQuery({ query: "(max-width: 768px)" });
@@ -65,46 +67,53 @@ const Sidebar = () => {
     isTabletMid && setOpen(false);
   }, [pathname]);
 
+
+  const dispatch = useDispatch();
+
+  const logOut = useCallback(() => {
+    dispatch(logout());
+    navigate("/login");
+  }, [dispatch]);
+
   const Nav_animation = isTabletMid
     ? {
-        open: {
-          x: 0,
-          width: "16rem",
-          transition: {
-            damping: 40,
-          },
+      open: {
+        x: 0,
+        width: "16rem",
+        transition: {
+          damping: 40,
         },
-        closed: {
-          x: -250,
-          width: 0,
-          transition: {
-            damping: 40,
-            delay: 0.15,
-          },
+      },
+      closed: {
+        x: -250,
+        width: 0,
+        transition: {
+          damping: 40,
+          delay: 0.15,
         },
-      }
+      },
+    }
     : {
-        open: {
-          width: "16rem",
-          transition: {
-            damping: 40,
-          },
+      open: {
+        width: "16rem",
+        transition: {
+          damping: 40,
         },
-        closed: {
-          width: "6rem",
-          transition: {
-            damping: 40,
-          },
+      },
+      closed: {
+        width: "6rem",
+        transition: {
+          damping: 40,
         },
-      };
+      },
+    };
 
   return (
     <div>
       <div
         onClick={() => setOpen(false)}
-        className={`md:hidden fixed inset-0 max-h-screen z-[998] bg-black/50 ${
-          open ? "block" : "hidden"
-        } `}
+        className={`md:hidden fixed inset-0 max-h-screen z-[998] bg-black/50 ${open ? "block" : "hidden"
+          } `}
       ></div>
       <motion.div
         ref={sidebarRef}
@@ -112,17 +121,39 @@ const Sidebar = () => {
         initial={{ x: isTabletMid ? -250 : 0 }}
         animate={open ? "open" : "closed"}
         className=" bg-white text-gray shadow-xl z-[999] max-w-[16rem]  w-[16rem] 
-            overflow-hidden md:relative fixed
+        overflow-y-scroll md:relative fixed
          h-screen "
       >
         <div className="flex items-center gap-2.5 font-medium border-b py-3 border-slate-300  mx-3">
           <img src={Logoimage} width={70} className="ml-2" />
-          {/* <span className="text-xl whitespace-pre text-[#205aa7]">
-            THÀNH ĐẠT
-          </span> */}
+          <button onClick={logOut} class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+            Đăng xuất
+          </button>
+          <motion.div
+            onClick={() => {
+              setOpen(!open);
+            }}
+            animate={
+              open
+                ? {
+                  x: 10,
+                  y: -550,
+                  rotate: 0,
+                }
+                : {
+                  x: 10,
+                  y: -550,
+                  rotate: 180,
+                }
+            }
+            transition={{ duration: 0 }}
+            className="absolute w-fit h-fit md:block z-50 hidden right-2 bottom-3 cursor-pointer"
+          >
+            <IoIosArrowBack size={25} className={"text-blue-500"} />
+          </motion.div>
         </div>
 
-        <div className="flex flex-col  h-full">
+        <div className="flex flex-col  h-full ">
           <Menu
             // theme="dark"
             mode="inline"
@@ -277,29 +308,9 @@ const Sidebar = () => {
               },
             ]}
           />
+
         </div>
-        <motion.div
-          onClick={() => {
-            setOpen(!open);
-          }}
-          animate={
-            open
-              ? {
-                  x: 0,
-                  y: 0,
-                  rotate: 0,
-                }
-              : {
-                  x: -10,
-                  y: -200,
-                  rotate: 180,
-                }
-          }
-          transition={{ duration: 0 }}
-          className="absolute w-fit h-fit md:block z-50 hidden right-2 bottom-3 cursor-pointer"
-        >
-          <IoIosArrowBack size={25} />
-        </motion.div>
+
       </motion.div>
       <div className="m-3 md:hidden  " onClick={() => setOpen(true)}>
         <MdMenu size={25} />

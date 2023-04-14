@@ -31,6 +31,7 @@ const AddAbout = () => {
   const [sumang, setSumang] = useState("");
 
   useEffect(() => {
+    
     const getdata = async () => {
       await axios
         .get(`${process.env.REACT_APP_API_URL}about-us/`)

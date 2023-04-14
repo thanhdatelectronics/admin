@@ -1,20 +1,30 @@
 import MainLayout from "./MainLayout.js";
 import { Layout, Menu, theme } from "antd";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { Outlet } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useCallback } from "react";
 
 function RootLayout({ children }) {
+
+
+  const { user: currentUser } = useSelector((state) => state.auth);
+
+  if (!currentUser) {
+    return <Navigate to="/login" />;
+  }
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-  const navigate = useNavigate();
+
   return (
     <div>
       <ToastContainer pauseOnHover={false} draggable={false} />
       <div className="flex lg:gap-5">
         <MainLayout />
-        <main className="max-w-5xl flex-1 py-20">
+        <main className="max-w-7xl flex-1 py-20">
           <Outlet />
         </main>
       </div>
