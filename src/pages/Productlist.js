@@ -155,7 +155,7 @@ const Productlist = () => {
                 className=" fs-3 text-danger cursor-pointer"
               >
                 <Link
-                  to={`/admin/product/${productState._id}`}
+                  to={`/product/${productState._id}`}
                   className=" fs-3 text-danger"
                 >
                   <BiEdit />

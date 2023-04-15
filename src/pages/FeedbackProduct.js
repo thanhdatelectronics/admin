@@ -28,10 +28,8 @@ const FeedbackProduct = () => {
       )
       .then((response) => {
         setFeedbackProduct(response.data);
-        console.log(response.data);
       })
       .catch((e) => {
-        console.log(e);
       });
   }, [id, feedbackproducts]);
 
@@ -50,7 +48,6 @@ const FeedbackProduct = () => {
         config
       )
       .then((response) => {
-        console.log(response);
         if (response.data.status == "Delete Success") {
           toast.success("Xóa bình luận thành công");
           hideModal();

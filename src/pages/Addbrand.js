@@ -23,7 +23,7 @@ const Addbrand = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [categoryCTN, setCategoryContainer] = useState("");
-  const getBrandId = location.pathname.split("/")[3];
+  const getBrandId = location.pathname.split("/")[2];
   const newBrand = useSelector((state) => state.brand);
   const {
     isSuccess,
@@ -54,7 +54,7 @@ const Addbrand = () => {
     }
     if (isSuccess && updatedBrand) {
       toast.success("Sửa nhãn hàng thành công!");
-      navigate("/admin/list-brand");
+      navigate("/list-brand");
     }
     if (isError) {
       toast.warning("Đã xảy ra lỗi!");
@@ -70,7 +70,7 @@ const Addbrand = () => {
     validationSchema: schema,
     onSubmit: (values) => {
       const data = { id: getBrandId, brandData: values };
-      
+
       if (getBrandId !== undefined) {
         dispatch(updateABrand(data));
         dispatch(resetState());

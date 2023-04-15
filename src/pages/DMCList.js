@@ -44,7 +44,6 @@ const DMCList = () => {
     setOpen(false);
   };
 
-
   const data1 = [];
   for (let i = 0; i < cConState.length; i++) {
     data1.push({
@@ -53,10 +52,7 @@ const DMCList = () => {
       action: (
         <>
           <div className="flex">
-            <Link
-              to={`/admin/dmc/${cConState[i]._id}`}
-              className=" fs-3 text-danger"
-            >
+            <Link to={`/dmc/${cConState[i]._id}`} className=" fs-3 text-danger">
               <BiEdit />
             </Link>
             <button
@@ -82,10 +78,9 @@ const DMCList = () => {
   };
 
   useEffect(() => {
-  
     dispatch(getcContainers());
   }, [dispatch]);
-  
+
   return (
     <div>
       <h3 className="mb-4 title text-xl font-bold">Danh mục sản phẩm chính</h3>

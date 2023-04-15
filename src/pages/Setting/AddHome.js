@@ -22,7 +22,6 @@ const AddHome = () => {
       await axios
         .get(`${process.env.REACT_APP_API_URL}home/`)
         .then((response) => {
-          console.log(response.data);
           const dataHome = response.data[0];
           setImgHeader(dataHome.imgheader.secure_url);
           setTitleheader(dataHome.titleheader);
@@ -36,9 +35,7 @@ const AddHome = () => {
           setDescriptionSanPham1(dataHome.descriptionsanpham1);
           setDescriptionSanPham2(dataHome.descriptionsanpham2);
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((error) => {});
     };
 
     getdata();
@@ -69,10 +66,7 @@ const AddHome = () => {
       })
       .catch((error) => {
         if (error.response.status === 500) {
-          console.log(error);
           toast.warning("Cập nhật không thành công");
-        } else {
-          console.error(error);
         }
       });
   };

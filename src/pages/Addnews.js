@@ -4,9 +4,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import {
-  getCategories,
-} from "../features/bcategory/bcategorySlice";
+import { getCategories } from "../features/bcategory/bcategorySlice";
 import axios from "axios";
 import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
@@ -20,6 +18,7 @@ const Addnews = () => {
   const [videos, setVideos] = useState("");
   const [editorContent, setEditorContent] = useState(EditorState.createEmpty());
   const blogState = useSelector((state) => state.blognew);
+  const navigate = useNavigate();
   const { ablogs } = blogState;
   const handleEditorChange = (editorState) => {
     setEditorContent(editorState);
@@ -84,15 +83,13 @@ const Addnews = () => {
         },
       })
       .then((Response) => {
-        console.log(Response);
         toast.success("Sửa thành công");
+        navigate("/list-news");
       })
       .catch((error) => {
         if (error.response.status === 500) {
-          console.log(error);
           toast.warning("Tiêu đề đã tồn tại hoặc chưa chọn danh mục tin tức");
         } else {
-          console.error(error);
         }
       });
   };
@@ -116,15 +113,12 @@ const Addnews = () => {
         },
       })
       .then((Response) => {
-        console.log(Response);
         toast.success("Thêm thành công");
       })
       .catch((error) => {
         if (error.response.status === 500) {
-          console.log(error);
           toast.warning("Tiêu đề đã tồn tại hoặc chưa chọn danh mục tin tức");
         } else {
-          console.error(error);
         }
       });
   };

@@ -8,9 +8,13 @@ const getcContainers = async () => {
 };
 
 const createcContainer = async (cCon) => {
-  const response = await axios.post(`${base_url}categorycontainer/`, cCon, config);
+  const response = await axios.post(
+    `${base_url}categorycontainer/`,
+    cCon,
+    config
+  );
   return response.data;
-}
+};
 const updatecContainer = async (cContainer) => {
   const response = await axios.put(
     `${base_url}categorycontainer/${cContainer.id}`,
@@ -22,21 +26,27 @@ const updatecContainer = async (cContainer) => {
   return response.data;
 };
 const getcContainer = async (id) => {
-  const response = await axios.get(`${base_url}categorycontainer/${id}`, config);
+  const response = await axios.get(
+    `${base_url}categorycontainer/${id}`,
+    config
+  );
   return response.data;
 };
 
 const deletecContainer = async (id) => {
-  const response = await axios.delete(`${base_url}categorycontainer/${id}`, config);
+  const response = await axios.delete(
+    `${base_url}categorycontainer/${id}`,
+    config
+  );
   return response.data;
 };
 
 const cContainerService = {
-getcContainers,
-createcContainer,
-updatecContainer,
-getcContainer,
-deletecContainer,
+  getcContainers,
+  createcContainer,
+  updatecContainer,
+  getcContainer,
+  deletecContainer,
 };
 
 export default cContainerService;

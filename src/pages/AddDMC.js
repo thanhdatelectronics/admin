@@ -21,7 +21,7 @@ const AddDMC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const getcConId = location.pathname.split("/")[3];
+  const getcConId = location.pathname.split("/")[2];
   const newcCon = useSelector((state) => state.catectn);
   const {
     isSuccess,
@@ -46,7 +46,7 @@ const AddDMC = () => {
     }
     if (isSuccess && updatedcCon) {
       toast.success("Cập nhật danh mục tin tức thành công");
-      navigate("/admin/blog-category-list");
+      navigate("/dmc-list");
     }
     if (isError) {
       toast.warning("Đã xảy ra lỗi!");

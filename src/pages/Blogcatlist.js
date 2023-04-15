@@ -43,8 +43,6 @@ const Blogcatlist = () => {
     setOpen(false);
   };
 
-
-
   const data1 = [];
   for (let i = 0; i < bCatState.length; i++) {
     data1.push({
@@ -54,7 +52,7 @@ const Blogcatlist = () => {
         <>
           <div className="flex">
             <Link
-              to={`/admin/blogcategory/${bCatState[i]._id}`}
+              to={`/blogcategory/${bCatState[i]._id}`}
               className=" fs-3 text-danger"
             >
               <BiEdit />
@@ -77,7 +75,7 @@ const Blogcatlist = () => {
       await dispatch(resetState());
       await dispatch(getCategories());
     }, 1000);
-    toast.success("Xóa danh mục tin tức thành công")
+    toast.success("Xóa danh mục tin tức thành công");
   };
 
   useEffect(() => {

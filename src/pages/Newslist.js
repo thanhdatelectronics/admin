@@ -86,7 +86,6 @@ const Listnews = () => {
   const [editorContent, setEditorContent] = useState(EditorState.createEmpty());
   const blogState = useSelector((state) => state.blognew.blogs);
   const bCategoryState = useSelector((state) => state.bCategory.bCategories);
-
   const dispatch = useDispatch();
 
   const showModelNews = (e) => {
@@ -111,7 +110,6 @@ const Listnews = () => {
       const nameBCategory = bCategoryState.filter((ct) => {
         return ct._id == blogState[i].category;
       });
-      console.log(nameBCategory);
       data.push({
         key: i + 1,
         title: blogState[i].title,
@@ -125,7 +123,7 @@ const Listnews = () => {
             <div className="flex">
               <Link
                 className="fs-3 text-primary bg-transparent border-0"
-                to={`/admin/news/${blogState[i]._id}`}
+                to={`/news/${blogState[i]._id}`}
                 // onClick={() => showModalEdit(blogState[i])}
               >
                 <BiEdit />

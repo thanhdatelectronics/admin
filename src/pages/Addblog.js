@@ -26,7 +26,7 @@ const Addblog = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const getBlogId = location.pathname.split("/")[3];
+  const getBlogId = location.pathname.split("/")[2];
   const imgState = useSelector((state) => state.upload.images);
   const bCatState = useSelector((state) => state.bCategory.bCategories);
   const blogState = useSelector((state) => state.blogs);
@@ -75,7 +75,6 @@ const Addblog = () => {
       url: i.url,
     });
   });
-  console.log(img);
   useEffect(() => {
     formik.values.images = img;
   }, [blogImages]);

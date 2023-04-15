@@ -45,7 +45,6 @@
 //     dispatch(getMenus());
 //   }, []);
 //   const brandState = useSelector((state) => state.menu.brands);
-//   console.log(brandState.Menu);
 //   const data1 = [];
 //   for (let i = 0; i < brandState.length; i++) {
 //     data1.push({

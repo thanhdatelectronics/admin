@@ -25,7 +25,7 @@ const Addproduct = () => {
   const [description, setDescription] = useState("");
   const [Idcategory, setIdcategory] = useState("");
   const [brand, setBrand] = useState("");
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getBrands());
@@ -77,7 +77,6 @@ const Addproduct = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(name, description, Idcategory, brand, image);
     let formData = new FormData();
     formData.append("name", name);
     formData.append("description", description);
@@ -93,19 +92,14 @@ const Addproduct = () => {
         },
       })
       .then((Response) => {
-        console.log(Response);
         toast.success("Thêm thành công");
       })
       .catch((error) => {
-
-        console.log(error);
-
       });
   };
 
   const submitform = (e) => {
     e.preventDefault();
-    console.log(name, description, Idcategory, brand, image);
     let formData = new FormData();
     formData.append("name", name);
     formData.append("description", description);
@@ -117,11 +111,10 @@ const Addproduct = () => {
     axios
       .put(`${process.env.REACT_APP_API_URL}products/${id}`, formData, config)
       .then((response) => {
-        console.log(response);
         toast("Sửa thành công");
+        navigate("/list-product");
       })
       .catch((error) => {
-        console.log(error);
         toast("Sửa không thành công");
       });
   };

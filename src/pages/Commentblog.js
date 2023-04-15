@@ -28,7 +28,6 @@ const CommentBlog = () => {
         setCommentBlog(response.data);
       })
       .catch((e) => {
-        console.log(e);
       });
   }, [id, commentblogs]);
 
@@ -47,7 +46,6 @@ const CommentBlog = () => {
         config
       )
       .then((response) => {
-        console.log(response);
         if (response.data.status == "Delete Success") {
           toast.success("Xóa bình luận thành công");
         } else {
