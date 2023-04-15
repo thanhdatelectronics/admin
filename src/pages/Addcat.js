@@ -22,8 +22,8 @@ const Addcat = () => {
   const [categoryCTN, setCategoryContainer] = useState("");
   const dispatch = useDispatch();
   const location = useLocation();
+  // const { getPCatId } = useParams();
   const getPCatId = location.pathname.split("/")[2];
-  const navigate = useNavigate();
   const newCategory = useSelector((state) => state.pCategory);
   const {
     isSuccess,
@@ -54,7 +54,6 @@ const Addcat = () => {
     }
     if (isSuccess && updatedCategory) {
       toast.success("Cập nhật danh mục thành công!");
-      navigate("/list-category");
     }
     if (isError) {
       toast.warning("Đã xảy ra lỗi!");

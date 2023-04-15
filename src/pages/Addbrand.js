@@ -21,7 +21,6 @@ let schema = yup.object().shape({
 const Addbrand = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const navigate = useNavigate();
   const [categoryCTN, setCategoryContainer] = useState("");
   const getBrandId = location.pathname.split("/")[2];
   const newBrand = useSelector((state) => state.brand);
@@ -54,7 +53,6 @@ const Addbrand = () => {
     }
     if (isSuccess && updatedBrand) {
       toast.success("Sửa nhãn hàng thành công!");
-      navigate("/list-brand");
     }
     if (isError) {
       toast.warning("Đã xảy ra lỗi!");
