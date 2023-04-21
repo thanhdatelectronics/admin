@@ -1,6 +1,6 @@
 import axios from "axios";
 import { config } from "../../utils/axiosconfig";
-import { base_url} from "../../utils/baseUrl";
+import { base_url } from "../../utils/baseUrl";
 import { base_url_vercel } from "../../utils/baseUrl";
 
 const getBrands = async () => {
@@ -14,7 +14,7 @@ const createBrand = async (brand) => {
 const updateABrand = async (brand) => {
   const response = await axios.put(
     `${base_url}brand/${brand.id}`,
-    { 
+    {
       title: brand.brandData.title,
       idCategoriesContainer: brand.brandData.idCategoriesContainer,
     },
@@ -25,7 +25,6 @@ const updateABrand = async (brand) => {
 
 const getBrand = async (id) => {
   const response = await axios.get(`${base_url}brand/${id}`, config);
-
   return response.data;
 };
 
@@ -39,8 +38,7 @@ const BrandService = {
   getBrands,
   deleteBrand,
   updateABrand,
-  createBrand
+  createBrand,
 };
-
 
 export default BrandService;

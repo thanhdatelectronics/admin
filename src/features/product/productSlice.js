@@ -40,7 +40,6 @@ export const deleteAProduct = createAsyncThunk(
     try {
       return await productService.deleteProduct(id);
     } catch (error) {
-      console.log("error", error);
       return thunkAPI.rejectWithValue(error);
     }
   }

@@ -42,9 +42,6 @@ const Brandlist = () => {
     setOpen(false);
   };
 
-  
-  
-
   const data1 = [];
   for (let i = 0; i < brandState.length; i++) {
     data1.push({
@@ -54,7 +51,7 @@ const Brandlist = () => {
         <>
           <div className="flex">
             <Link
-              to={`/admin/brand/${brandState[i]._id}`}
+              to={`/brand/${brandState[i]._id}`}
               className=" fs-3 text-danger"
             >
               <BiEdit />
@@ -85,9 +82,6 @@ const Brandlist = () => {
     dispatch(getBrands());
   }, [dispatch]);
 
-
-
-  
   return (
     <div className="md:flex md:flex-col md:items-start">
       <h3 className="mb-4 text-xl font-bold">Brands</h3>

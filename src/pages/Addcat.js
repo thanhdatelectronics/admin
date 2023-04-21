@@ -22,8 +22,8 @@ const Addcat = () => {
   const [categoryCTN, setCategoryContainer] = useState("");
   const dispatch = useDispatch();
   const location = useLocation();
-  const getPCatId = location.pathname.split("/")[3];
-  const navigate = useNavigate();
+  // const { getPCatId } = useParams();
+  const getPCatId = location.pathname.split("/")[2];
   const newCategory = useSelector((state) => state.pCategory);
   const {
     isSuccess,
@@ -54,7 +54,6 @@ const Addcat = () => {
     }
     if (isSuccess && updatedCategory) {
       toast.success("Cập nhật danh mục thành công!");
-      navigate("/admin/category");
     }
     if (isError) {
       toast.warning("Đã xảy ra lỗi!");
@@ -70,7 +69,6 @@ const Addcat = () => {
     validationSchema: schema,
     onSubmit: (values) => {
       const data = { id: getPCatId, cateData: values };
-      console.log(data);
       if (getPCatId !== undefined) {
         dispatch(updateAProductCategory(data));
         dispatch(resetState());
@@ -91,6 +89,9 @@ const Addcat = () => {
       </h3>
       <div>
         <form action="" onSubmit={formik.handleSubmit}>
+          <label>
+            Danh mục chính: <span></span>
+          </label>
           <select
             name="brand"
             className="form-control py-2 mb-3 "

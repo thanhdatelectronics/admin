@@ -19,9 +19,8 @@ let schema = yup.object().shape({
 
 const Addblogcat = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const location = useLocation();
-  const getBlogCatId = location.pathname.split("/")[3];
+  const getBlogCatId = location.pathname.split("/")[2];
   const newBlogCategory = useSelector((state) => state.bCategory);
   const {
     isSuccess,
@@ -46,7 +45,6 @@ const Addblogcat = () => {
     }
     if (isSuccess && updatedBlogCategory) {
       toast.success("Cập nhật danh mục tin tức thành công");
-      navigate("/admin/blog-category-list");
     }
     if (isError) {
       toast.warning("Đã xảy ra lỗi!");

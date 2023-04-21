@@ -61,7 +61,6 @@ const Linklist = () => {
     dispatch(getLinks());
   }, []);
   const linkState = useSelector((state) => state.link.links);
-  console.log(linkState);
   const data1 = [];
   for (let i = 0; i < linkState.length; i++) {
     data1.push({

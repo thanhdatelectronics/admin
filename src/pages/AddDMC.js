@@ -19,9 +19,8 @@ let schema = yup.object().shape({
 
 const AddDMC = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const location = useLocation();
-  const getcConId = location.pathname.split("/")[3];
+  const getcConId = location.pathname.split("/")[2];
   const newcCon = useSelector((state) => state.catectn);
   const {
     isSuccess,
@@ -42,11 +41,10 @@ const AddDMC = () => {
 
   useEffect(() => {
     if (isSuccess && createcContainer) {
-      toast.success("Thêm danh mục tin tức thành công");
+      toast.success("Thêm danh mục chính thành công");
     }
     if (isSuccess && updatedcCon) {
-      toast.success("Cập nhật danh mục tin tức thành công");
-      navigate("/admin/blog-category-list");
+      toast.success("Cập nhật danh mục chính thành công");
     }
     if (isError) {
       toast.warning("Đã xảy ra lỗi!");

@@ -68,14 +68,12 @@ const Menulist = () => {
     dispatch(getBrands());
   }, []);
   const menuState = useSelector((state) => state.menu.menus);
-  console.log(menuState);
   const data1 = [];
   for (let i = 0; i < menuState.length; i++) {
     const noidung = menuState[i].doc;
     // const contentState = convertFromRaw(noidung);
     // const editorState = EditorState.createWithContent(contentState);
     // const html = convertToHTML(editorState.getCurrentContent());
-    console.log(noidung);
     data1.push({
       key: i + 1,
       name: menuState[i].name,

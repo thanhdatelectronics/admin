@@ -45,8 +45,6 @@ const Categorylist = () => {
   };
   const dispatch = useDispatch();
 
-
-
   const data1 = [];
   for (let i = 0; i < pCategories.length; i++) {
     data1.push({
@@ -56,7 +54,7 @@ const Categorylist = () => {
         <>
           <div className="flex">
             <Link
-              to={`/admin/category/${pCategories[i]._id}`}
+              to={`/category/${pCategories[i]._id}`}
               className=" fs-3 text-danger"
             >
               <BiEdit />
@@ -83,8 +81,6 @@ const Categorylist = () => {
     }, 1000);
     toast.success("Xóa danh mục thành công");
   };
-
-
 
   useEffect(() => {
     dispatch(getCategories());

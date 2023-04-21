@@ -31,7 +31,6 @@ const AddFooter = () => {
           setGmail(datas.gmail);
         })
         .catch((error) => {
-          console.log(error);
         });
     };
 
@@ -61,10 +60,7 @@ const AddFooter = () => {
       })
       .catch((error) => {
         if (error.response.status === 500) {
-          console.log(error);
           toast.warning("Cập nhật không thành công");
-        } else {
-          console.error(error);
         }
       });
   };

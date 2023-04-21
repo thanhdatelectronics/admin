@@ -77,7 +77,6 @@ const Contactlist = () => {
   const dispatch = useDispatch();
 
   const brandState = useSelector((state) => state.contacts.contacts);
-  console.log(useSelector((state) => state.contacts.contacts));
   const data1 = [];
   for (let i = 0; i < brandState.length; i++) {
     data1.push({

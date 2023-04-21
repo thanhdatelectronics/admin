@@ -23,7 +23,6 @@ const AddService = () => {
           setTitleBody(response.data[0].titlebody1);
         })
         .catch((error) => {
-          console.log(error);
         });
     };
 
@@ -50,10 +49,7 @@ const AddService = () => {
       })
       .catch((error) => {
         if (error.response.status === 500) {
-          console.log(error);
-          toast.warning("Cập nhật không thành");
-        } else {
-          console.error(error);
+          toast.warning("Cập nhật không thành công");
         }
       });
   };
