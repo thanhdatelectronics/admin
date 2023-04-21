@@ -87,7 +87,7 @@ const Addproduct = () => {
       formData.append(`image`, image[i]);
     }
     axios
-      .post(`${process.env.REACT_APP_API_URL}products/create`, formData, {
+      .post(`${process.env.REACT_APP_API_URL}products/`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
