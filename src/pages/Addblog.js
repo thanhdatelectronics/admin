@@ -112,6 +112,7 @@ const Addblog = () => {
         <form action="" onSubmit={formik.handleSubmit}>
           <div className="mt-4">
             <CustomInput
+              required
               type="text"
               label="Enter Blog Title"
               name="title"
@@ -124,6 +125,7 @@ const Addblog = () => {
             {formik.touched.title && formik.errors.title}
           </div>
           <select
+            required
             name="category"
             onChange={formik.handleChange("category")}
             onBlur={formik.handleBlur("category")}

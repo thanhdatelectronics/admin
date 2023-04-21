@@ -93,6 +93,7 @@ const Addcat = () => {
             Danh mục chính: <span></span>
           </label>
           <select
+            required
             name="brand"
             className="form-control py-2 mb-3 "
             onChange={(e) => setCategoryContainer(e.target.value)}
@@ -114,6 +115,7 @@ const Addcat = () => {
             onBlr={formik.handleBlur("name")}
             val={formik.values.name}
             id="category"
+            required
           />
           <div className="error">
             {formik.touched.name && formik.errors.name}

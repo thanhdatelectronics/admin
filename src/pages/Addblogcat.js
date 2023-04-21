@@ -81,6 +81,7 @@ const Addblogcat = () => {
         <form action="" onSubmit={formik.handleSubmit}>
           <CustomInput
             type="text"
+            required
             name="title"
             onChng={formik.handleChange("title")}
             onBlr={formik.handleBlur("title")}

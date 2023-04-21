@@ -91,6 +91,7 @@ const Addbrand = () => {
         <form action="" onSubmit={formik.handleSubmit}>
           <select
             name="brand"
+            required
             className="form-control py-2 mb-3 "
             onChange={(e) => setCategoryContainer(e.target.value)}
           >
@@ -106,6 +107,7 @@ const Addbrand = () => {
           <CustomInput
             type="text"
             name="title"
+            required
             onChng={formik.handleChange("title")}
             onBlr={formik.handleBlur("title")}
             val={formik.values.title}
