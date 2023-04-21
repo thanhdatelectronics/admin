@@ -57,7 +57,7 @@ body {
 }
 
 main {
-  height: 70vh;
+  height: 90vh;
   overflow-y: scroll;
   background-color: transparent !important;
 }
